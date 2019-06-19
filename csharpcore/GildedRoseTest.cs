@@ -78,6 +78,15 @@ namespace csharpcore
         }
         
         [Fact]
+        public void GivenSulfrasWhenADayPassesTheSellInDoesNotChange()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 1, Quality = 80 } };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+            Assert.Equal(1, Items[0].SellIn);
+        }
+        
+        [Fact]
         public void GivenBackstagePassesHaveSellIn11WhenADayPassesTheQualityIncreasesByOne()
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 11, Quality = 1 } };

@@ -36,7 +36,11 @@ namespace csharpcore
                 {
                     Items[i].Quality++;
                 }
-                Items[i].SellIn--;
+
+                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                {
+                    Items[i].SellIn--;
+                }
             }
         }
     }
