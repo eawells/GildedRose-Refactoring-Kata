@@ -132,6 +132,15 @@ namespace csharpcore
         }
         
         [Fact]
+        public void GivenBackstagePassesHaveQuality50WhenADayPassesTheQualityRemains50()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 50 } };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+            Assert.Equal(50, Items[0].Quality);
+        }
+        
+        [Fact]
         public void GivenConjuredItemWhenADayPassesThenTheQualityDecreasesBy2()
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Conjured Mana Cake", SellIn = 5, Quality = 5 } };

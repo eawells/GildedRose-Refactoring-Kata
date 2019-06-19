@@ -37,6 +37,11 @@ namespace csharpcore
                     Items[i].Quality++;
                 }
 
+                if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert" && Items[i].Quality < 50)
+                {
+                    Items[i].Quality++;
+                }
+
                 if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                 {
                     Items[i].SellIn--;
