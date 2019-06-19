@@ -4,15 +4,15 @@ namespace csharpcore
 {
     public class GildedRose
     {
-        IList<Item> Items;
-        public GildedRose(IList<Item> Items)
+        private readonly IList<Item> _items;
+        public GildedRose(IList<Item> items)
         {
-            this.Items = Items;
+            this._items = items;
         }
 
         public void UpdateQuality()
         {
-            HashSet<string> specialItems = new HashSet<string>
+            var specialItems = new HashSet<string>
             {
                 "Aged Brie",
                 "Sulfuras, Hand of Ragnaros",
@@ -20,27 +20,32 @@ namespace csharpcore
                 "Conjured Mana Cake"
             };
 
-            for (var i = 0; i < Items.Count; i++)
+            foreach (var item in _items)
             {
-                if (!specialItems.Contains(Items[i].Name))
+                if (!specialItems.Contains(item.Name))
                 {
-                    UpdateNonSpecialItem(Items[i]);
+                    UpdateNonSpecialItem(item);
                 }
 
-                if (Items[i].Name == "Aged Brie")
+                if (item.Name == "Aged Brie")
                 {
-                    UpdateAgedBrie(Items[i]);
+                    UpdateAgedBrie(item);
                 }
 
-                if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
+                if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
                 {
-                    UpdateBackstagePass(Items[i]);
+                    UpdateBackstagePass(item);
                 }
                 
-                if (Items[i].Name == "Conjured Mana Cake")
+                if (item.Name == "Conjured Mana Cake")
                 {
-                    UpdateNonSpecialItem(Items[i]);
-                    UpdateNonSpecialItem(Items[i]);
+                    UpdateNonSpecialItem(item);
+                    UpdateNonSpecialItem(item);
+                }
+
+                if (item.Name != "Sulfuras, Hand of Ragnaros")
+                {
+                    item.SellIn--;
                 }
             }
         }
@@ -56,8 +61,6 @@ namespace csharpcore
 
                 nonSpecial.Quality--;
             }
-
-            nonSpecial.SellIn--;
         }
 
         private void UpdateAgedBrie(Item agedBrie)
@@ -66,8 +69,6 @@ namespace csharpcore
             {
                 agedBrie.Quality++;
             }
-
-            agedBrie.SellIn--;
         }
 
         private void UpdateBackstagePass(Item backstagePass)
@@ -91,8 +92,6 @@ namespace csharpcore
                     backstagePass.Quality = 0;
                 }
             }
-            
-            backstagePass.SellIn--;
         }
     }
 }
