@@ -27,9 +27,9 @@ namespace csharpcore
                     UpdateNonSpecialItem(Items[i]);
                 }
 
-                if (Items[i].Name == "Aged Brie" && Items[i].Quality < 50)
+                if (Items[i].Name == "Aged Brie")
                 {
-                    Items[i].Quality++;
+                    UpdateAgedBrie(Items[i]);
                 }
 
                 if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert" && Items[i].Quality < 50)
@@ -68,6 +68,16 @@ namespace csharpcore
             }
 
             nonSpecial.SellIn--;
+        }
+
+        private void UpdateAgedBrie(Item agedBrie)
+        {
+            if (agedBrie.Quality < 50)
+            {
+                agedBrie.Quality++;
+            }
+
+            agedBrie.SellIn--;
         }
     }
 }

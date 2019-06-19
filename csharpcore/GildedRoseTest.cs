@@ -60,6 +60,15 @@ namespace csharpcore
         }
         
         [Fact]
+        public void GivenAgedBrieWhenADayPassesTheSellInDecreasesByOne()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Aged Brie", SellIn = 1, Quality = 5 } };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+            Assert.Equal(0, Items[0].SellIn);
+        }
+        
+        [Fact]
         public void GivenAgedBrieHasQuality50WhenADayPassesTheQualityDoesNotIncrease()
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Aged Brie", SellIn = 1, Quality = 50 } };
