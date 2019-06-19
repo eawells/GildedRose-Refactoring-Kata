@@ -52,45 +52,52 @@ namespace csharpcore
 
         private void UpdateNonSpecialItem(Item nonSpecial)
         {
-            if (nonSpecial.Quality > 0)
-            {
-                nonSpecial.Quality--;
+            DecreaseQuality(nonSpecial);
 
-                if (nonSpecial.SellIn <= 0 && nonSpecial.Quality > 0)
-                {
-                    nonSpecial.Quality--;
-                }
+            if (nonSpecial.SellIn <= 0)
+            {
+                DecreaseQuality(nonSpecial);
             }
         }
 
         private void UpdateAgedBrie(Item agedBrie)
         {
-            if (agedBrie.Quality < 50)
-            {
-                agedBrie.Quality++;
-            }
+            IncreaseQuality(agedBrie);
         }
 
         private void UpdateBackstagePass(Item backstagePass)
         {
-            if(backstagePass.Quality < 50)
+            IncreaseQuality(backstagePass);
+
+            if (backstagePass.SellIn <= 10)
             {
-                backstagePass.Quality++;
+                IncreaseQuality(backstagePass);
+            }
 
-                if (backstagePass.SellIn <= 10 && backstagePass.Quality < 50)
-                {
-                    backstagePass.Quality++;
-                }
-
-                if (backstagePass.SellIn <= 5 && backstagePass.Quality < 50)
-                {
-                    backstagePass.Quality++;
-                }
-                
-                if (backstagePass.SellIn == 0)
-                {
-                    backstagePass.Quality = 0;
-                }
+            if (backstagePass.SellIn <= 5)
+            {
+                IncreaseQuality(backstagePass);
+            }
+            
+            if (backstagePass.SellIn == 0)
+            {
+                backstagePass.Quality = 0;
+            }
+        }
+        
+        private void DecreaseQuality(Item item)
+        {
+            if (item.Quality > 0)
+            {
+                item.Quality--;
+            }
+        }
+        
+        private void IncreaseQuality(Item item)
+        {
+            if (item.Quality < 50)
+            {
+                item.Quality++;
             }
         }
     }
