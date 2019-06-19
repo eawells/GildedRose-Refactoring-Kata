@@ -31,6 +31,11 @@ namespace csharpcore
                     }
                     Items[i].Quality--;
                 }
+
+                if (Items[i].Name == "Aged Brie" && Items[i].Quality < 50)
+                {
+                    Items[i].Quality++;
+                }
                 Items[i].SellIn--;
             }
         }
