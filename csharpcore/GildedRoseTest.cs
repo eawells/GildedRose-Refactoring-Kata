@@ -112,5 +112,14 @@ namespace csharpcore
             app.UpdateQuality();
             Assert.Equal(0, Items[0].Quality);
         }
+        
+        [Fact]
+        public void GivenConjuredItemWhenADayPassesThenTheQualityDecreasesBy2()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Conjured Mana Cake", SellIn = 5, Quality = 5 } };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+            Assert.Equal(3, Items[0].Quality);
+        }
     }
 }
