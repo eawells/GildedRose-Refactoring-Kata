@@ -22,14 +22,9 @@ namespace csharpcore
 
             for (var i = 0; i < Items.Count; i++)
             {
-                if (!specialItems.Contains(Items[i].Name) && Items[i].Quality > 0)
+                if (!specialItems.Contains(Items[i].Name))
                 {
-                    if (Items[i].SellIn <= 0)
-                    {
-                        Items[i].Quality--;
-                    }
-
-                    Items[i].Quality--;
+                    UpdateNonSpecialItem(Items[i]);
                 }
 
                 if (Items[i].Name == "Aged Brie" && Items[i].Quality < 50)
@@ -57,12 +52,22 @@ namespace csharpcore
                         Items[i].Quality++;
                     }
                 }
-
-                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                {
-                    Items[i].SellIn--;
-                }
             }
+        }
+
+        private void UpdateNonSpecialItem(Item nonSpecial)
+        {
+            if (nonSpecial.Quality > 0)
+            {
+                if (nonSpecial.SellIn <= 0)
+                {
+                    nonSpecial.Quality--;
+                }
+
+                nonSpecial.Quality--;
+            }
+
+            nonSpecial.SellIn--;
         }
     }
 }
