@@ -36,6 +36,12 @@ namespace csharpcore
                 {
                     UpdateBackstagePass(Items[i]);
                 }
+                
+                if (Items[i].Name == "Conjured Mana Cake")
+                {
+                    UpdateNonSpecialItem(Items[i]);
+                    UpdateNonSpecialItem(Items[i]);
+                }
             }
         }
 
