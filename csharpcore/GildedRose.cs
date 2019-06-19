@@ -23,12 +23,15 @@ namespace csharpcore
             
             for (var i = 0; i < Items.Count; i++)
             {
-                if (!specialItems.Contains(Items[i].Name) && Items[i].Quality > 0 && Items[i].SellIn > 0)
+                if (!specialItems.Contains(Items[i].Name) && Items[i].Quality > 0)
                 {
+                    if (Items[i].SellIn <= 0)
+                    {
+                        Items[i].Quality--;
+                    }
                     Items[i].Quality--;
-                    Items[i].SellIn--;
-
                 }
+                Items[i].SellIn--;
             }
         }
     }
