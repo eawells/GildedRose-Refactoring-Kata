@@ -150,6 +150,15 @@ namespace csharpcore
         }
         
         [Fact]
+        public void GivenBackstagePassesWhenADayPassesTheSellInDecreasesByOne()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 1, Quality = 3 } };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+            Assert.Equal(0, Items[0].SellIn);
+        }
+        
+        [Fact]
         public void GivenBackstagePassesHaveSellIn10WhenADayPassesTheQualityDoesNotExceed50()
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 49 } };

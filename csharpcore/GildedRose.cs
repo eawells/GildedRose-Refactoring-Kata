@@ -32,25 +32,9 @@ namespace csharpcore
                     UpdateAgedBrie(Items[i]);
                 }
 
-                if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert" && Items[i].Quality < 50)
+                if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
                 {
-                    if (Items[i].SellIn == 0)
-                    {
-                        Items[i].Quality = 0;
-                        break;
-                    }
-
-                    Items[i].Quality++;
-
-                    if (Items[i].SellIn <= 10 && Items[i].Quality < 50)
-                    {
-                        Items[i].Quality++;
-                    }
-
-                    if (Items[i].SellIn <= 5 && Items[i].Quality < 50)
-                    {
-                        Items[i].Quality++;
-                    }
+                    UpdateBackstagePass(Items[i]);
                 }
             }
         }
@@ -78,6 +62,31 @@ namespace csharpcore
             }
 
             agedBrie.SellIn--;
+        }
+
+        private void UpdateBackstagePass(Item backstagePass)
+        {
+            if(backstagePass.Quality < 50)
+            {
+                backstagePass.Quality++;
+
+                if (backstagePass.SellIn <= 10 && backstagePass.Quality < 50)
+                {
+                    backstagePass.Quality++;
+                }
+
+                if (backstagePass.SellIn <= 5 && backstagePass.Quality < 50)
+                {
+                    backstagePass.Quality++;
+                }
+                
+                if (backstagePass.SellIn == 0)
+                {
+                    backstagePass.Quality = 0;
+                }
+            }
+            
+            backstagePass.SellIn--;
         }
     }
 }
