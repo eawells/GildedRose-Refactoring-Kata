@@ -33,6 +33,15 @@ namespace csharpcore
         }
         
         [Fact]
+        public void GivenANonSpecialItemHasANegativeSellIn_WhenADayPassesAndQualityIsOne_ThenQualityDecreasesToZero()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = -1, Quality = 1 } };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+            Assert.Equal(0, Items[0].Quality);
+        }
+        
+        [Fact]
         public void GivenANonSpecialItemHasQualityZero_WhenADayPasses_ThenQualityDoesNotDecrease()
         {
             IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = 1, Quality = 0 } };

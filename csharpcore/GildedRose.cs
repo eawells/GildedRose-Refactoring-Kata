@@ -54,12 +54,12 @@ namespace csharpcore
         {
             if (nonSpecial.Quality > 0)
             {
-                if (nonSpecial.SellIn <= 0)
+                nonSpecial.Quality--;
+
+                if (nonSpecial.SellIn <= 0 && nonSpecial.Quality > 0)
                 {
                     nonSpecial.Quality--;
                 }
-
-                nonSpecial.Quality--;
             }
         }
 
