@@ -7,10 +7,10 @@ namespace csharpcore
         private readonly IList<Item> _items;
         public GildedRose(IList<Item> items)
         {
-            this._items = items;
+            _items = items;
         }
 
-        public void UpdateQuality()
+        public void UpdateItem()
         {
             var specialItems = new HashSet<string>
             {
@@ -43,10 +43,7 @@ namespace csharpcore
                     UpdateNonSpecialItem(item);
                 }
 
-                if (item.Name != "Sulfuras, Hand of Ragnaros")
-                {
-                    item.SellIn--;
-                }
+                DecreaseSellIn(item);
             }
         }
 
@@ -99,6 +96,14 @@ namespace csharpcore
             {
                 item.Quality++;
             }
+        }
+
+        private void DecreaseSellIn(Item item)
+        {
+            if (item.Name != "Sulfuras, Hand of Ragnaros")
+            {
+                item.SellIn--;
+            } 
         }
     }
 }

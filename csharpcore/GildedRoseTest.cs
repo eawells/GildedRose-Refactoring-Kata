@@ -10,7 +10,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = 1, Quality = 1 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(0, Items[0].SellIn);
         }
         
@@ -19,7 +19,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = 1, Quality = 1 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(0, Items[0].Quality);
         }
         
@@ -28,7 +28,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = -1, Quality = 2 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(0, Items[0].Quality);
         }
         
@@ -37,7 +37,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = -1, Quality = 1 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(0, Items[0].Quality);
         }
         
@@ -46,7 +46,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = 1, Quality = 0 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(0, Items[0].Quality);
         }
         
@@ -55,7 +55,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = 1, Quality = 0 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(0, Items[0].SellIn);
         }
         
@@ -64,7 +64,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Aged Brie", SellIn = 1, Quality = 0 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(1, Items[0].Quality);
         }
         
@@ -73,7 +73,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Aged Brie", SellIn = 1, Quality = 5 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(0, Items[0].SellIn);
         }
         
@@ -82,7 +82,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Aged Brie", SellIn = 1, Quality = 50 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(50, Items[0].Quality);
         }
         
@@ -91,7 +91,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 1, Quality = 80 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(80, Items[0].Quality);
         }
         
@@ -100,7 +100,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 1, Quality = 80 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(1, Items[0].SellIn);
         }
         
@@ -109,7 +109,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 11, Quality = 1 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(2, Items[0].Quality);
         }
         
@@ -118,7 +118,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 1 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(3, Items[0].Quality);
         }
         
@@ -127,7 +127,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 1 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(4, Items[0].Quality);
         }
         
@@ -136,7 +136,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 1, Quality = 1 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(4, Items[0].Quality);
         }
         
@@ -145,7 +145,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 0, Quality = 1 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(0, Items[0].Quality);
         }
         
@@ -154,7 +154,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 50 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(50, Items[0].Quality);
         }
         
@@ -163,7 +163,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 1, Quality = 3 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(0, Items[0].SellIn);
         }
         
@@ -172,7 +172,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 49 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(50, Items[0].Quality);
         }
         
@@ -181,7 +181,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 48 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(50, Items[0].Quality);
         }
         
@@ -190,7 +190,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Conjured Mana Cake", SellIn = 5, Quality = 5 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(3, Items[0].Quality);
         }
         
@@ -199,7 +199,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Conjured Mana Cake", SellIn = 5, Quality = 5 } };
             GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
+            app.UpdateItem();
             Assert.Equal(4, Items[0].SellIn);
         }
     }
