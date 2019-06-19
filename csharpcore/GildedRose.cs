@@ -44,6 +44,10 @@ namespace csharpcore
                     {
                         Items[i].Quality++;
                     }
+                    if (Items[i].SellIn <= 5 && Items[i].Quality < 50)
+                    {
+                        Items[i].Quality++;
+                    }
                 }
 
                 if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
