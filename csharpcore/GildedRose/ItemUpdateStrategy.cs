@@ -2,14 +2,14 @@ using csharpcore;
 
 namespace csharpcore
 {
-    public interface IQualityUpdateStrategy
+    public interface IItemUpdateStrategy
     {
         int GetItemQuality(int sellIn, int quality);
         int GetItemSellIn(int sellIn, int quality);
     }
 }
 
-class NormalQualityUpdateStrategy : IQualityUpdateStrategy
+class NormalItemUpdateStrategy : IItemUpdateStrategy
 {
     public int GetItemQuality(int sellIn, int quality)
     {

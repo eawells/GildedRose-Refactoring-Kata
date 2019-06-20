@@ -5,9 +5,9 @@
         public string Name { get; set; }
         public int SellIn { get; set; }
         public int Quality { get; set; }
-        public IQualityUpdateStrategy Strategy { get; set; }
+        public IItemUpdateStrategy Strategy { get; set; }
 
-        public Item(IQualityUpdateStrategy strategy)
+        public Item(IItemUpdateStrategy strategy)
         {
             Strategy = strategy;
         }
