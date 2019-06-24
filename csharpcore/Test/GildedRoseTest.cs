@@ -184,7 +184,7 @@ namespace csharpcore
             app.UpdateItems();
             Assert.Equal(50, Items[0].Quality);
         }
-        
+
         [Fact]
         public void GivenBackstagePassesHaveSellIn5_WhenADayPasses_ThenTheQualityDoesNotExceed50()
         {
@@ -192,6 +192,15 @@ namespace csharpcore
             GildedRose app = new GildedRose(Items);
             app.UpdateItems();
             Assert.Equal(50, Items[0].Quality);
+        }
+
+        [Fact]
+        public void GivenConjuredItem_WhenADayPasses_ThenTheQualityGoesDownByTwo()
+        {
+            IList<Item> Items = new List<Item> { new Item() { Name = "Conjured Mana Cake", SellIn = 5, Quality = 48 } };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateItems();
+            Assert.Equal(46, Items[0].Quality);
         }
     }
 }

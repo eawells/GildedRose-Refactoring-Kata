@@ -9,7 +9,8 @@ namespace csharpcore
         private readonly HashSet<string> _specialItems = new HashSet<string>
         {
             "Aged Brie",
-            "Backstage passes to a TAFKAL80ETC concert"
+            "Backstage passes to a TAFKAL80ETC concert",
+            "Conjured Mana Cake"
         };
 
         public GildedRose(IList<Item> items)
@@ -39,6 +40,11 @@ namespace csharpcore
                 if (item.Name == "Aged Brie")
                 {
                     UpdateAgedBrieQuality(item);
+                }
+
+                if (item.Name == "Conjured Mana Cake")
+                {
+                    item.Quality = item.Quality - 2;
                 }
 
                 item.SellIn = item.SellIn - 1;
