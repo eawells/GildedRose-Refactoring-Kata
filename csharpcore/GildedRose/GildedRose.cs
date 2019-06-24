@@ -104,10 +104,8 @@ namespace csharpcore
 
         private void IncreaseQuality(Item item)
         {
-            if (item.Quality < 50)
-            {
-                item.Quality = item.Quality + 1;
-            }
+            if (item.Quality >= 50) return;
+            item.Quality = item.Quality + 1;
         }
     }
 }
