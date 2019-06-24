@@ -23,16 +23,7 @@ namespace csharpcore
                     IncreaseQuality(item);
                     if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
                     {
-                        if (item.SellIn < 11)
-                        {
-                            IncreaseQuality(item);
-                        }
-
-                        if (item.SellIn < 6)
-                        {
-                            IncreaseQuality(item);
-
-                        }
+                        UpdateBackstagePasses(item);
                     }
                 }
 
@@ -51,7 +42,7 @@ namespace csharpcore
                         }
                         else
                         {
-                            item.Quality = item.Quality - item.Quality;
+                            item.Quality = 0;
                         }
                     }
                     else
@@ -59,6 +50,19 @@ namespace csharpcore
                         IncreaseQuality(item);
                     }
                 }
+            }
+        }
+
+        private void UpdateBackstagePasses(Item backstagePasses)
+        {
+            if (backstagePasses.SellIn < 11)
+            {
+                IncreaseQuality(backstagePasses);
+            }
+
+            if (backstagePasses.SellIn < 6)
+            {
+                IncreaseQuality(backstagePasses);
             }
         }
 
