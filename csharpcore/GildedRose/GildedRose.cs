@@ -99,10 +99,7 @@ namespace csharpcore
         private void DecreaseQuality(Item item)
         {
             if (item.Quality <= 0) return;
-            if (item.Name != "Sulfuras, Hand of Ragnaros")
-            {
-                item.Quality = item.Quality - 1;
-            }
+            item.Quality = item.Quality - 1;
         }
 
         private void IncreaseQuality(Item item)
