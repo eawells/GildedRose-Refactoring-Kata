@@ -44,7 +44,13 @@ namespace csharpcore
 
                 if (item.Name == "Conjured Mana Cake")
                 {
-                    item.Quality = item.Quality - 2;
+                    DecreaseQuality(item);
+                    DecreaseQuality(item);
+                    if (item.SellIn <= 0)
+                    {
+                        DecreaseQuality(item);
+                        DecreaseQuality(item);
+                    }
                 }
 
                 item.SellIn = item.SellIn - 1;

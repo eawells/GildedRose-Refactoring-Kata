@@ -202,7 +202,7 @@ namespace csharpcore
             app.UpdateItems();
             Assert.Equal(46, Items[0].Quality);
         }
-        
+
         [Fact]
         public void GivenConjuredItem_WhenADayPasses_ThenTheSellInDecreasesByOne()
         {
@@ -210,6 +210,15 @@ namespace csharpcore
             GildedRose app = new GildedRose(items);
             app.UpdateItems();
             Assert.Equal(0, items[0].SellIn);
+        }
+
+        [Fact]
+        public void GivenConjuredItemHasSellInZero_WhenADayPasses_ThenTheSellInDecreasesByFour()
+        {
+            IList<Item> items = new List<Item> { new Item() { Name = "Conjured Mana Cake", SellIn = 0, Quality = 5 }};
+            GildedRose app = new GildedRose(items);
+            app.UpdateItems();
+            Assert.Equal(1, items[0].Quality);
         }
     }
 }
