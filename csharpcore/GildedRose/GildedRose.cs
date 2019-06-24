@@ -17,7 +17,7 @@ namespace csharpcore
             _items = items;
         }
 
-        public void UpdateQuality()
+        public void UpdateItems()
         {
             foreach (var item in _items)
             {
@@ -28,24 +28,24 @@ namespace csharpcore
 
                 if (!_specialItems.Contains(item.Name))
                 {
-                    UpdateNormalItem(item);
+                    UpdateNormalItemQuality(item);
                 }
 
                 if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
                 {
-                    UpdateBackstagePasses(item);
+                    UpdateBackstagePassesQuality(item);
                 }
 
                 if (item.Name == "Aged Brie")
                 {
-                    UpdateAgedBrie(item);
+                    UpdateAgedBrieQuality(item);
                 }
 
                 item.SellIn = item.SellIn - 1;
             }
         }
 
-        private void UpdateNormalItem(Item item)
+        private void UpdateNormalItemQuality(Item item)
         {
             DecreaseQuality(item);
             if (item.SellIn <= 0)
@@ -54,7 +54,7 @@ namespace csharpcore
             }
         }
 
-        private void UpdateAgedBrie(Item item)
+        private void UpdateAgedBrieQuality(Item item)
         {
             IncreaseQuality(item);
             if (item.SellIn <= 0)
@@ -63,7 +63,7 @@ namespace csharpcore
             }
         }
 
-        private void UpdateBackstagePasses(Item backstagePasses)
+        private void UpdateBackstagePassesQuality(Item backstagePasses)
         {
             if (backstagePasses.SellIn <= 0)
             {
