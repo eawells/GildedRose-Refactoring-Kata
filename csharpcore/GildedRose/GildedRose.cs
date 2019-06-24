@@ -30,17 +30,22 @@ namespace csharpcore
 
                 if (item.Name == "Aged Brie")
                 {
-                    IncreaseQuality(item);
-                    if (item.SellIn <= 0)
-                    {
-                        IncreaseQuality(item);
-                    }
+                    UpdateAgedBrie(item);
                 }
 
                 if (item.Name != "Sulfuras, Hand of Ragnaros")
                 {
                     item.SellIn = item.SellIn - 1;
                 }
+            }
+        }
+
+        private void UpdateAgedBrie(Item item)
+        {
+            IncreaseQuality(item);
+            if (item.SellIn <= 0)
+            {
+                IncreaseQuality(item);
             }
         }
 
