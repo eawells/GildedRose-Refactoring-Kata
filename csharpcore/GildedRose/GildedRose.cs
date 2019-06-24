@@ -5,6 +5,13 @@ namespace csharpcore
     public class GildedRose
     {
         private readonly IList<Item> _items;
+
+        private readonly HashSet<string> _specialItems = new HashSet<string>
+        {
+            "Aged Brie",
+            "Backstage passes to a TAFKAL80ETC concert"
+        };
+
         public GildedRose(IList<Item> items)
         {
             _items = items;
@@ -19,13 +26,9 @@ namespace csharpcore
                     continue;
                 }
 
-                if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
+                if (!_specialItems.Contains(item.Name))
                 {
-                    DecreaseQuality(item);
-                    if (item.SellIn <= 0)
-                    {
-                        DecreaseQuality(item);
-                    }
+                    UpdateNormalItem(item);
                 }
 
                 if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
@@ -39,6 +42,15 @@ namespace csharpcore
                 }
 
                 item.SellIn = item.SellIn - 1;
+            }
+        }
+
+        private void UpdateNormalItem(Item item)
+        {
+            DecreaseQuality(item);
+            if (item.SellIn <= 0)
+            {
+                DecreaseQuality(item);
             }
         }
 
