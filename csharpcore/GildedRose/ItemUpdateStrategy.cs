@@ -13,6 +13,11 @@ class NormalItemUpdateStrategy : IItemUpdateStrategy
 {
     public int GetItemQuality(int sellIn, int quality)
     {
+        if (sellIn < 0)
+        {
+            quality--;
+        }
+
         return quality - 1;
     }
     
