@@ -14,6 +14,11 @@ namespace csharpcore
         {
             foreach (var item in _items)
             {
+                if (item.Name == "Sulfuras, Hand of Ragnaros")
+                {
+                    continue;
+                }
+
                 if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
                 {
                     DecreaseQuality(item);
@@ -33,10 +38,7 @@ namespace csharpcore
                     UpdateAgedBrie(item);
                 }
 
-                if (item.Name != "Sulfuras, Hand of Ragnaros")
-                {
-                    item.SellIn = item.SellIn - 1;
-                }
+                item.SellIn = item.SellIn - 1;
             }
         }
 
