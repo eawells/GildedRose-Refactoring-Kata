@@ -17,6 +17,10 @@ namespace csharpcore
                 if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
                 {
                     DecreaseQuality(item);
+                    if (item.SellIn <= 0)
+                    {
+                        DecreaseQuality(item);
+                    }
                 }
                 else
                 {
@@ -27,28 +31,21 @@ namespace csharpcore
                     }
                 }
 
-                if (item.Name != "Sulfuras, Hand of Ragnaros")
+                if (item.SellIn <= 0)
                 {
-                    item.SellIn = item.SellIn - 1;
-                }
-
-                if (item.SellIn < 0)
-                {
-                    if (item.Name != "Aged Brie")
+                    if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
                     {
-                        if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
-                        {
-                            DecreaseQuality(item);
-                        }
-                        else
-                        {
-                            item.Quality = 0;
-                        }
+                        item.Quality = 0;
                     }
-                    else
+                    if (item.Name == "Aged Brie")
                     {
                         IncreaseQuality(item);
                     }
+                }
+
+                if (item.Name != "Sulfuras, Hand of Ragnaros")
+                {
+                    item.SellIn = item.SellIn - 1;
                 }
             }
         }
