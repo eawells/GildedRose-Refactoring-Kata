@@ -22,22 +22,16 @@ namespace csharpcore
                         DecreaseQuality(item);
                     }
                 }
-                else
+
+                if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
                 {
-                    IncreaseQuality(item);
-                    if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
-                    {
-                        UpdateBackstagePasses(item);
-                    }
+                    UpdateBackstagePasses(item);
                 }
 
-                if (item.SellIn <= 0)
+                if (item.Name == "Aged Brie")
                 {
-                    if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
-                    {
-                        item.Quality = 0;
-                    }
-                    if (item.Name == "Aged Brie")
+                    IncreaseQuality(item);
+                    if (item.SellIn <= 0)
                     {
                         IncreaseQuality(item);
                     }
@@ -52,6 +46,14 @@ namespace csharpcore
 
         private void UpdateBackstagePasses(Item backstagePasses)
         {
+            if (backstagePasses.SellIn <= 0)
+            {
+                backstagePasses.Quality = 0;
+                return;
+            }
+
+            IncreaseQuality(backstagePasses);
+
             if (backstagePasses.SellIn < 11)
             {
                 IncreaseQuality(backstagePasses);
