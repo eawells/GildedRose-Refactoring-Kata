@@ -51,27 +51,21 @@ namespace csharpcore
             }
         }
 
-        private void UpdateConjuredItemQuality(Item item)
+        private void UpdateNormalItemQuality(Item normalItem)
         {
-            UpdateNormalItemQuality(item);
-            UpdateNormalItemQuality(item);
-        }
-
-        private void UpdateNormalItemQuality(Item item)
-        {
-            DecreaseQuality(item);
-            if (item.SellIn <= 0)
+            DecreaseQuality(normalItem);
+            if (normalItem.SellIn <= 0)
             {
-                DecreaseQuality(item);
+                DecreaseQuality(normalItem);
             }
         }
 
-        private void UpdateAgedBrieQuality(Item item)
+        private void UpdateAgedBrieQuality(Item agedBrie)
         {
-            IncreaseQuality(item);
-            if (item.SellIn <= 0)
+            IncreaseQuality(agedBrie);
+            if (agedBrie.SellIn <= 0)
             {
-                IncreaseQuality(item);
+                IncreaseQuality(agedBrie);
             }
         }
 
@@ -94,6 +88,12 @@ namespace csharpcore
             {
                 IncreaseQuality(backstagePasses);
             }
+        }
+
+        private void UpdateConjuredItemQuality(Item conjuredItem)
+        {
+            UpdateNormalItemQuality(conjuredItem);
+            UpdateNormalItemQuality(conjuredItem);
         }
 
         private void DecreaseQuality(Item item)
